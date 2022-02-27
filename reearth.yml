@@ -1,0 +1,19 @@
+id: stories-widget-reearth-plugin
+name: Stories Widget
+version: 0.1.1
+extensions:
+  - id: stories
+    type: widget
+    name: Stories Widget
+    widgetLayout:
+      defaultLocation:
+        zone: outer
+        section: left
+        area: bottom
+    schema:
+      groups:
+        - id: default
+          fields:
+            - id: title
+              type: string
+              title: Title
