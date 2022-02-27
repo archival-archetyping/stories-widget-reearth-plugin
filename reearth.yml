@@ -1,6 +1,6 @@
 id: stories-widget-reearth-plugin
 name: Stories Widget
-version: 0.1.1
+version: 0.1.2
 extensions:
   - id: stories
     type: widget

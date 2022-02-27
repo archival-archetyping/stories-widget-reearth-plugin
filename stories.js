@@ -28,7 +28,8 @@ const html = `
   }
 </style>
 <div id="wrapper">
-  <h2 id="title"></h2>
+  <h2 id="story_title"></h2>
+  <h3 id="marker_title"></h3>
   <p>
     <button id="prev">Prev</button>
     <button id="next">Next</button>
@@ -45,7 +46,7 @@ const html = `
 
     // これは実際には不要
     if (property && property.default) {
-      document.getElementById('title').textContent = property.default.title;
+      document.getElementById('story_title').textContent = property.default.title;
     }
 
     // この部分の必要性は今ひとつよく分からない
@@ -62,25 +63,23 @@ const html = `
       }
     }
 
-    document.getElementById('title').textContent = e.data.title;
+    document.getElementById('story_title').textContent = e.data.title;
     markers = e.data.markers;
+    prev();
   };
 
   addEventListener('message', (e) => {
     if (e.source !== parent) return;
-    console.log('here');
     cb(e);
   });
 
   const prev = () => {
     index = Math.max(0, index - 1);
-    console.log('index', index);
     select(markers[index]);
   };
 
   const next = () => {
     index = Math.min(markers.length - 1, index + 1);
-    console.log('index', index);
     select(markers[index]);
   };
 
@@ -94,6 +93,7 @@ const html = `
       { duration: 2 }
     );
     reearth.layers.select(targetMarker.id);
+    document.getElementById('marker_title').textContent = targetMarker.title + ' (' + (index + 1) + ' / ' + markers.length + ')';
   };
 
   document.getElementById('prev').addEventListener('click', prev);
@@ -111,7 +111,6 @@ function update() {
   let markers = [];
 
   // このエラーチェックはもっとちゃんとやる必要あり
-  console.log('layer', layer);
   if (typeof layer === undefined) {
     return;
   }
@@ -126,7 +125,6 @@ function update() {
 
     markers.push({ lat: lat, lng: lng, height: height, id: id, title: title });
   }
-  console.log('markers', markers);
 
   reearth.ui.postMessage({
     property: reearth.widget.property,
