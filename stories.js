@@ -65,7 +65,9 @@ const html = `
 
     document.getElementById('story_title').textContent = e.data.title;
     markers = e.data.markers;
-    prev();
+    
+    // 最初のマーカーを自動的に選択する
+    // prev();
   };
 
   addEventListener('message', (e) => {
