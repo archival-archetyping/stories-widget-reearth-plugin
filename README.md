@@ -6,7 +6,7 @@ This is a widget plugin that treats each layer of Re:Earth as a story and allows
 
 ## Steps to set up layers
 
-- Add the tag `tour` to the layer you want to treat as a story with this plugin.
+- Add the tag `story` to the layer you want to treat as a story with this plugin.
 - Add the tag `descending` to a layer that is in reverse order after importing a CSV file as a data set.
 
 ## Parameters
@@ -21,7 +21,7 @@ Re:Earthの各レイヤーを物語として扱い、標準機能のストーリ
 
 ## レイヤーの設定手順
 
-- このプラグインでストーリーとして扱いたいレイヤーに、`tour`というタグを追加します。
+- このプラグインでストーリーとして扱いたいレイヤーに、`story`というタグを追加します。
 - CSVファイルをデータセットとして読み込んだ際に逆順になってしまったレイヤーがあれば、`descending`というタグを追加します。
 
 ## パラメータ
