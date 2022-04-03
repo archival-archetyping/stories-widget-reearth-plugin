@@ -165,7 +165,7 @@ const html = `
       $mainWrap.appendChild($description)
     }
 
-    // この部分の必要性は今ひとつよく分からない
+    // ［編集ページ］で［ウィジェット］＞［ウィジェットの配置を編集］を有効にしている場合に対応するための処理
     if (property && property.extended) {
       if (property.extended.horizontally) { document.documentElement.classList.add('extendedh');
       } else {  document.documentElement.classList.remove('extendedh');
@@ -259,12 +259,11 @@ reearth.on('update', update);
 update();
 
 function update() {
-  // tourタグの付いたレイヤーから決め打ちで最初のものだけを取り出す
+  // storyタグの付いたレイヤーから決め打ちで最初のものだけを取り出す
   const _origin = reearth.layers.findByTagLabels('origin')[0]
   let _layers = reearth.layers.findByTagLabels('story');
   let layers = []
 
-  // このエラーチェックはもっとちゃんとやる必要あり
   if (typeof _layers === undefined) {
     return;
   }
@@ -272,7 +271,7 @@ function update() {
   _layers.reverse().map((layer, index) => {
     if (!layer.children　|| !(layer.children.length > 0)) return null
     let markers = [];
-    // 直下のChildrenが1つ、かつ、その下のChildrenが複数ある時（もっといい分類がありそう）はデータセット
+    // 直下のchildrenが1つ、かつ、その下のchildrenが複数ある時（もっといい分類がありそう）はデータセットとして判断する
     if (layer.children.length === 1 && layer.children[0].children.length > 0) {
       // 降順指定
       const desc = layer.tags && layer.tags.length > 0 && layer.tags.some(t => t.label === "descending")

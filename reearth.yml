@@ -22,4 +22,4 @@ extensions:
               title: Description
             - id: autostart
               type: bool
-              title: Auto Start
+              title: Auto start
